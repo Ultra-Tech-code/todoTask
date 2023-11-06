@@ -21,7 +21,7 @@ function renderPage() {
                     <div>
                         <p class="m-6 cursor-pointer" onclick="home()"><i class="fa fa-arrow-left" aria-hidden="true"></i> all task</p>
                         <h1 class="text-2xl font-semibold">${previewDB.name}</h1>
-                        <p class="text-gray-400 cursor-pointer py-3" onclick="addDescription('${previewDB.ID}')">${previewDB.Description || "No Description"}</p>
+                        <p class="text-gray-400 cursor-pointer py-3" onclick="addDescription('${previewDB.ID}')">${previewDB.Description || "Add Description"}</p>
                         <p class="text-gray-400">${previewDB.date}</p>
                     </div>
                     <div>
