@@ -25,6 +25,7 @@ function createTodo(e) {
         name: todoInput.value,
         date: dateObj.toLocaleDateString("en-US"),
         ID: Math.random(),
+        completed: false,
         order:  dateObj.getMilliseconds(),
     }
 
@@ -59,18 +60,21 @@ function readTodo(){
 
     todoDB.sort((a, b) => b.order - a.order);
     todoDB.map((todo)=>{
-        const listItem = document.createElement('li');
-        listItem.classList.add("flex", "justify-between", "p-2", "border-b-2", "border-gray-300");
-        listItem.innerHTML = `
-            <span>${todo.name}</span>
-            <span>${todo.date}</span>
+        // const listItem = document.createElement('li');
+        // listItem.classList.add("flex", "justify-between", "p-2", "border-b-2", "border-gray-300");
+        let listItem = `
+        <li class="group flex justify-between p-2 border-b-2 border-gray-300">
+            <div class="block group-hover:hidden" >${todo.name}</div>
+            <div class="block group-hover:hidden" >${todo.date}</div>
+            <button class="hidden text-dark group-hover:block" onclick="previewpage('${todo.ID}')"><i class="fa fa-arrow-right" aria-hidden="true"></i> Task</button>
             <form action="">
                 <button type="button" class="delete-button bg-red-500 text-white p-2 rounded-lg" data-index="${todo.ID}"><i class="fa fa-trash" aria-hidden="true"></i></button>
                 <button type="button" class="edit-button bg-yellow-500 text-white p-2 rounded-lg" data-index="${todo.ID}"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></button>
             </form>
+        </li>
         `;
 
-        todoTable.appendChild(listItem);
+        todoTable.innerHTML += listItem;
     })
     
     }   
@@ -164,4 +168,19 @@ todoTable.addEventListener('click', (event) => {
         }
     })
 
-    
+
+function previewpage(id){
+    // let todo = todoDB.find((todo) => todo.ID === parseFloat(id));
+    setDB('previewTodo', id)
+    window.location.href = "./preview.html"
+}
+
+const modal = document.querySelector('.absolute');
+const modal_page = document.querySelector('#modal_page');
+
+modal_page.addEventListener('click', (event) => {
+  if (!modal.contains(event.target)) {
+    modal.style.transform = 'translateX(-2rem) translateY(2rem)';
+    modal.style.opacity = '0';
+  }
+});
