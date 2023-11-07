@@ -58,6 +58,10 @@ function readTodo(){
         todoTable.innerHTML = `<h1 class="text-center ">No todo found</h1>`
     }
 
+    //get the length of todoDB
+    const todoDBLength = todoDB.length;
+    document.getElementById("taskCount").innerHTML = todoDBLength;
+
     todoDB.sort((a, b) => b.order - a.order);
     todoDB.map((todo)=>{
         // const listItem = document.createElement('li');
