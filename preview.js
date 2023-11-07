@@ -19,7 +19,7 @@ function renderPage() {
         previewPage.innerHTML += `
                 <div class="flex justify-around items-center content-center py-4">
                     <div>
-                    <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded cursor-pointer" onclick="home()">
+                    <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded cursor-pointer mb-2" onclick="home()">
                     <i class="fa fa-arrow-left" aria-hidden="true"></i> all task
                     </button>
                        
