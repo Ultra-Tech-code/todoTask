@@ -26,7 +26,7 @@ function createTodo(e) {
         date: dateObj.toLocaleDateString("en-US"),
         ID: Math.random(),
         completed: false,
-        order:  dateObj.getMilliseconds(),
+        order: Date.now(),
     }
 
     if(!storageSet()){
