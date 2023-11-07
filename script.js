@@ -63,16 +63,25 @@ function readTodo(){
         // const listItem = document.createElement('li');
         // listItem.classList.add("flex", "justify-between", "p-2", "border-b-2", "border-gray-300");
         let listItem = `
-        <li class="group flex justify-between p-2 border-b-2 border-gray-300">
-            <div class="block group-hover:hidden" >${todo.name}</div>
-            <div class="block group-hover:hidden" >${todo.date}</div>
-            <button class="hidden text-dark group-hover:block" onclick="previewpage('${todo.ID}')"><i class="fa fa-arrow-right" aria-hidden="true"></i> Task</button>
-            <form action="">
-                <button type="button" class="delete-button bg-red-500 text-white p-2 rounded-lg" data-index="${todo.ID}"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                <button type="button" class="edit-button bg-yellow-500 text-white p-2 rounded-lg" data-index="${todo.ID}"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></button>
-            </form>
-        </li>
+        <li class="group flex justify-between p-2 border-b-2 border-gray-300 hover:justify-evenly">
+        <div class="block flex-1 truncate group-hover:hidden group-hover:flex-none">${todo.name}</div>
+        <div class="block flex-1 group-hover:hidden group-hover:flex-none">${todo.date}</div>
+        <div class="flex-1 relative">
+            <button class="hidden text-dark group-hover:block absolute right-0" onclick="previewpage('${todo.ID}')">
+                <i class="fa fa-arrow-right" aria-hidden="true"></i> Task
+            </button>
+            <div class="space-x-2 ">
+                <button type="button" class="delete-button p-2 rounded-lg bg-red-500 hover:bg-red-500 text-white" data-index="${todo.ID}">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="edit-button p-2 rounded-lg bg-yellow-500 text-white hover:bg-yellow-600" data-index="${todo.ID}">
+                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </li>
         `;
+
 
         todoTable.innerHTML += listItem;
     })
@@ -175,12 +184,4 @@ function previewpage(id){
     window.location.href = "./preview.html"
 }
 
-const modal = document.querySelector('.absolute');
-const modal_page = document.querySelector('#modal_page');
 
-modal_page.addEventListener('click', (event) => {
-  if (!modal.contains(event.target)) {
-    modal.style.transform = 'translateX(-2rem) translateY(2rem)';
-    modal.style.opacity = '0';
-  }
-});

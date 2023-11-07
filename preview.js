@@ -11,15 +11,18 @@ function renderPage() {
         let  completed
 
         if (previewDB.completed === false || previewDB.completed === undefined) {
-          completed = `<button class="bg-gray-500 text-white px-4 py-2 rounded-lg" onclick="done(${previewDB.ID})"><i class="fa fa-times" aria-hidden="true"></i> Unmark</button>`
+          completed = `<button class="bg-gray-500 text-white px-4 py-2 rounded-lg" onclick="done(${previewDB.ID})"><i class="fa fa-times" aria-hidden="true"></i> Pending</button>`
         }else{
-            completed = `<button class="bg-green-500 text-white px-4 py-2 rounded-lg" onclick="done(${previewDB.ID})"><i class="fa fa-check" aria-hidden="true"></i> Unmark</button>`
+            completed = `<button class="bg-green-500 text-white px-4 py-2 rounded-lg" onclick="done(${previewDB.ID})"><i class="fa fa-check" aria-hidden="true"></i> Done</button>`
         }
 
         previewPage.innerHTML += `
                 <div class="flex justify-around items-center content-center py-4">
                     <div>
-                        <p class="m-6 cursor-pointer" onclick="home()"><i class="fa fa-arrow-left" aria-hidden="true"></i> all task</p>
+                    <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded cursor-pointer" onclick="home()">
+                    <i class="fa fa-arrow-left" aria-hidden="true"></i> all task
+                    </button>
+                       
                         <h1 class="text-2xl font-semibold">${previewDB.name}</h1>
                         <p class="text-gray-400 cursor-pointer py-3" onclick="addDescription('${previewDB.ID}')">${previewDB.Description || "Add Description"}</p>
                         <p class="text-gray-400">${previewDB.date}</p>
