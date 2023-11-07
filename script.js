@@ -67,14 +67,14 @@ function readTodo(){
         <div class="block flex-1 truncate group-hover:hidden group-hover:flex-none">${todo.name}</div>
         <div class="block flex-1 group-hover:hidden group-hover:flex-none">${todo.date}</div>
         <div class="flex-1 relative">
-            <button class="hidden text-dark group-hover:block absolute right-0" onclick="previewpage('${todo.ID}')">
+            <button class="hidden bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded cursor-pointer group-hover:block absolute right-0" onclick="previewpage('${todo.ID}')">
                 <i class="fa fa-arrow-right" aria-hidden="true"></i> Task
             </button>
-            <div class="space-x-2 ">
-                <button type="button" class="delete-button p-2 rounded-lg bg-red-500 hover:bg-red-500 text-white" data-index="${todo.ID}">
+            <div class="space-x-2">
+                <button type="button" class="delete-button p-2 rounded-lg bg-red-500 hover:bg-red-600 text-white cursor-pointer" data-index="${todo.ID}">
                     <i class="fa fa-trash" aria-hidden="true"></i>
                 </button>
-                <button type="button" class="edit-button p-2 rounded-lg bg-yellow-500 text-white hover:bg-yellow-600" data-index="${todo.ID}">
+                <button type="button" class="edit-button p-2 rounded-lg bg-yellow-500 text-white hover:bg-yellow-600 cursor-pointer" data-index="${todo.ID}">
                     <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                 </button>
             </div>
